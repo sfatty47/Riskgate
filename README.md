@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run RiskGate
-        uses: sfatty47/Riskgate@v0.1.0
+        uses: sfatty47/Riskgate@v0.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           config: .riskgate.yml

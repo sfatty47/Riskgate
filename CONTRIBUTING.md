@@ -23,7 +23,7 @@ Thanks for contributing to RiskGate.
 
 ## Releasing
 
-RiskGate uses **SemVer** tags (`vMAJOR.MINOR.PATCH`). **Downstream repositories** should pin workflows to a tag, for example `uses: sfatty47/Riskgate@v0.1.0`, not `@main`.
+RiskGate uses **SemVer** tags (`vMAJOR.MINOR.PATCH`). **Downstream repositories** should pin workflows to a tag, for example `uses: sfatty47/Riskgate@v0.1.2`, not `@main`.
 
 This repository’s own `.github/workflows/riskgate.yml` may use `@main` to exercise the latest action code on each push; that does not change the recommendation for consumers.
 
