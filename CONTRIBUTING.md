@@ -18,4 +18,5 @@ Thanks for contributing to RiskGate.
 ## Pull Requests
 
 - Include clear rationale and test coverage.
-- Update docs (`README.md`, config examples) when behavior changes.
+- Update docs (`README.md`, `.riskgate.yml` reference) when behavior changes.
+- Follow `CODE_OF_CONDUCT.md` in all project interactions.

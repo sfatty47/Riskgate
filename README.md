@@ -79,6 +79,13 @@ pip install -r requirements.txt
 python -m pytest
 ```
 
+## Community
+
+- Contributing guide: `CONTRIBUTING.md`
+- Code of conduct: `CODE_OF_CONDUCT.md`
+- Security policy: `SECURITY.md`
+- Support: `SUPPORT.md`
+
 ## License
 
 MIT

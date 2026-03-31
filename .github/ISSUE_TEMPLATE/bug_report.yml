@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a reproducible problem
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug in RiskGate.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Add workflow...
+        2. Open PR...
+        3. See failure...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: RiskGate version
+      placeholder: main / v0.x.x
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      render: shell
