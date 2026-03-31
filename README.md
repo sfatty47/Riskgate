@@ -9,10 +9,10 @@ RiskGate is an open-source GitHub Action for PR risk assessment, ownership mappi
 - Enforces review policy by risk level and sets commit status to block/allow merge.
 - Publishes a PR comment, risk badge, and JSON audit artifact.
 
-## Quickstart
+## Quickstart (use in another repository)
 
-1. Add `.riskgate.yml` (optional, defaults are built in).
-2. Add the workflow:
+1. In the **project you want to analyze**, add `.riskgate.yml` at the repo root (optional; sensible defaults work with no file).
+2. Add `.github/workflows/riskgate.yml`:
 
 ```yaml
 name: RiskGate PR Analysis
@@ -28,11 +28,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run RiskGate
-        uses: your-org/riskgate@main
+        uses: sfatty47/Riskgate@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           config: .riskgate.yml
 ```
+
+3. Open a pull request (or push new commits to one). RiskGate runs, posts a PR comment, sets commit status `riskgate/threshold`, and uploads an audit artifact.
+
+**Note:** `GITHUB_TOKEN` must be allowed to comment on PRs and set statuses (permissions above). For a **private** consumer repo, the default token is fine for same-repo workflows.
 
 ## Local Debug Run
 

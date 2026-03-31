@@ -17,6 +17,7 @@ inputs:
 runs:
   using: composite
   steps:
+    # Full history of the *target* repo (blast radius, churn, git-based ownership).
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -27,13 +28,16 @@ runs:
       with:
         python-version: "3.11"
 
-    - name: Install dependencies
+    # Dependencies and package live in the RiskGate action repo (github.action_path), not the caller repo.
+    - name: Install RiskGate dependencies
       shell: bash
-      run: pip install -r requirements.txt
+      run: pip install -r "${{ github.action_path }}/requirements.txt"
 
     - name: Run RiskGate
       shell: bash
+      working-directory: ${{ github.workspace }}
       env:
+        PYTHONPATH: ${{ github.action_path }}
         GITHUB_TOKEN: ${{ inputs.github-token }}
         GITHUB_REPOSITORY: ${{ github.repository }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
