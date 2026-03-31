@@ -1,0 +1,48 @@
+name: RiskGate
+
+description: AI-powered code review risk assessment and threshold enforcement
+inputs:
+  github-token:
+    description: GitHub token for API access
+    required: true
+  config:
+    description: Path to .riskgate.yml
+    required: false
+    default: .riskgate.yml
+  base-branch:
+    description: Base branch name
+    required: false
+    default: main
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install -r requirements.txt
+
+    - name: Run RiskGate
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        INPUT_CONFIG: ${{ inputs.config }}
+      run: python -m riskgate.main
+
+    - name: Upload audit artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: riskgate-audit
+        path: riskgate-audit/*.json

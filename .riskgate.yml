@@ -1,0 +1,41 @@
+ownership:
+  teams:
+    payments-team:
+      paths: ["src/billing/**", "src/payments/**"]
+      members: [alice, bob]
+    infra-team:
+      paths: ["Dockerfile", "*.tf", ".github/**"]
+      members: [carol]
+    security-team:
+      paths: ["src/auth/**", "src/crypto/**"]
+      members: [dave, eve]
+
+thresholds:
+  critical:
+    min_reviewers: 3
+    must_include: [security-team, tech-lead]
+    block_merge: true
+    notify: ["slack:#eng-critical"]
+  high:
+    min_reviewers: 2
+    must_include: [domain-owner]
+    block_merge: true
+  medium:
+    min_reviewers: 1
+    block_merge: false
+    notify: ["slack:#eng-reviews"]
+  low:
+    min_reviewers: 1
+    block_merge: false
+
+scoring:
+  weights:
+    blast_radius: 0.25
+    churn_score: 0.20
+    security_hits: 0.25
+    infra_proximity: 0.15
+    pr_size: 0.15
+  thresholds:
+    critical: 80
+    high: 55
+    medium: 30

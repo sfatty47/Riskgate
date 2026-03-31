@@ -1,0 +1,20 @@
+name: RiskGate PR Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+permissions:
+  pull-requests: write
+  statuses: write
+  contents: read
+
+jobs:
+  riskgate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run RiskGate
+        uses: your-org/riskgate@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config: .riskgate.yml
