@@ -1,0 +1,40 @@
+# Drop this file into sfatty47/Stock-Price-Prediction as `.riskgate.yml`
+#
+# Solo maintainer note: GitHub does not let you approve your own PR, so
+# `min_reviewers` + `block_merge: true` can block merges until someone else
+# approves. Below, merge blocking is off so RiskGate still comments and sets
+# status without stopping you. Tighten when you add collaborators.
+
+ownership:
+  teams:
+    maintainer:
+      paths: ["**/*.py", "**/*.html", "**/*.md", "**/*.ipynb"]
+      members: [sfatty47]
+
+thresholds:
+  critical:
+    min_reviewers: 1
+    must_include: [maintainer]
+    block_merge: false
+  high:
+    min_reviewers: 1
+    must_include: []
+    block_merge: false
+  medium:
+    min_reviewers: 1
+    block_merge: false
+  low:
+    min_reviewers: 1
+    block_merge: false
+
+scoring:
+  weights:
+    blast_radius: 0.20
+    churn_score: 0.15
+    security_hits: 0.30
+    infra_proximity: 0.10
+    pr_size: 0.25
+  thresholds:
+    critical: 80
+    high: 55
+    medium: 30
