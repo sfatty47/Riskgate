@@ -1,6 +1,11 @@
 name: RiskGate
 
-description: AI-powered code review risk assessment and threshold enforcement
+description: PR risk scoring, reviewer suggestions, and merge-threshold enforcement for GitHub pull requests (no LLM required).
+
+branding:
+  icon: shield
+  color: gray-dark
+
 inputs:
   github-token:
     description: GitHub token for API access
