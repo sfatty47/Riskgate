@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run RiskGate
-        uses: sfatty47/Riskgate@main
+        uses: sfatty47/Riskgate@v0.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           config: .riskgate.yml
@@ -82,9 +82,12 @@ python -m pytest
 ## Community
 
 - Contributing guide: `CONTRIBUTING.md`
+- Changelog: `CHANGELOG.md`
 - Code of conduct: `CODE_OF_CONDUCT.md`
 - Security policy: `SECURITY.md`
 - Support: `SUPPORT.md`
+
+Pin the Action to a **version tag** (for example `sfatty47/Riskgate@v0.1.0`) instead of `@main`. See **Releasing** in `CONTRIBUTING.md`.
 
 ## License
 
